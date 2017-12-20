@@ -115,10 +115,10 @@ class CPT_Restaurant {
 	 */
 	public function restaurant_register_columns( $columns ) {
 
-		$new['cb'] 				= '<input type="checkbox" />';
-		$new['thumbnail'] 		= __( 'Thumbnail', 'restaurants' );
-		$new['title'] 			= __( 'Title', 'restaurants' );
-		$new['date'] 			= __( 'Date' );
+		$new['cb'] 			= '<input type="checkbox" />';
+		$new['thumbnail'] 	= __( 'Thumbnail', 'restaurants' );
+		$new['title'] 		= __( 'Title', 'restaurants' );
+		$new['date'] 		= __( 'Date' );
 
 		return $new;
 

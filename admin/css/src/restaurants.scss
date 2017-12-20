@@ -103,3 +103,12 @@
 .repeater-more {
 	text-align: right;
 }
+
+@media screen and ( max-width: 782px ) {
+	.column-thumbnail {
+		display: none !important;
+	}
+	.size-col-thumb {
+		margin-left: 32%;
+	}
+}
