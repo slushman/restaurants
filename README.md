@@ -19,5 +19,8 @@ Simple Restaurants custom post post plugin.
 
 ## Upgrade Notice ##
 
+### 1.0.1 ###
+Hides the thumbnail column on mobile.
+
 ### 1.0.0 ###
 First verison.
