@@ -1,0 +1,105 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+.show {
+	display: block;
+}
+
+.hide {
+	display: none;
+}
+
+.repeater {
+	box-sizing 		: border-box;
+	margin-bottom 	: 1em;
+	width 			: 100%;
+
+	& * {
+		box-sizing: border-box;
+	}
+
+	&.closed {
+		.toggle-arrow {
+			&:before {
+				content: "\f140";
+			}
+		}
+	}
+
+	.handle,
+	.repeater-content {
+		border 		: 1px solid #ddd;
+		padding 	: 0.75em;
+	}
+
+	.repeater-content {
+		border-top: none;
+	}
+
+	.handle {
+		background-color: #fafafa;
+		cursor 			: move;
+		overflow 		: auto;
+		position		: relative;
+		width 			: 100%;
+	}
+
+	.btn-edit {
+		background 		: none;
+		border 			: none;
+		border-radius 	: 0;
+		box-shadow 		: none;
+		cursor 			: pointer;
+		height 			: 100%;
+		margin 			: 0;
+		outline 		: 0;
+		overflow 		: hidden;
+		padding 		: 0;
+		position 		: absolute;
+		right 			: 0;
+		top 			: 0;
+		width 			: 30px;
+	}
+
+	.toggle-arrow {
+		color 					: #a0a5aa;
+		display 				: inline-block;
+		font-family 			: dashicons;
+		font-size 				: 20px;
+		font-style 				: normal;
+		font-weight 			: 400px;
+		height 					: 20px;
+		line-height 			: 1;
+		text-align 				: center;
+		text-decoration 		: inherit;
+		transition 				: 0.4s ease;
+		vertical-align 			: top;
+		-webkit-font-smoothing 	: antialiased;
+		width 					: 20px;
+
+		&:before {
+			content: "\f142";
+		}
+	}
+
+	.link-remove {
+		color			: #a00;
+		text-decoration : none;
+
+		&:hover {
+			color 			: red;
+			text-decoration : underline;
+		}
+	}
+
+	#upload-file {
+		display 	: block;
+		text-align 	: right;
+	}
+}
+
+.repeater-more {
+	text-align: right;
+}

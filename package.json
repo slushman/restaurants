@@ -1,0 +1,46 @@
+{
+  "name": "restaurants",
+  "version": "1.0.0",
+  "description": "=== Restaurants === Contributors: slushman Donate link: https://www.slushman.com/ Tags: menus, restaurants Requires at least: 3.0.1 Tested up to: 4.9 Stable tag: 1.0.0 License: GPLv2 or later License URI: http://www.gnu.org/licenses/gpl-2.0.html",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/slushman/restaurants.git"
+  },
+  "author": "slushman",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/slushman/restaurants/issues"
+  },
+  "homepage": "https://github.com/slushman/restaurants#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "event-stream": "^3.3.4",
+    "fs": "0.0.1-security",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-filter": "^5.0.1",
+    "gulp-imagemin": "^4.0.0",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-merge-media-queries": "^0.2.1",
+    "gulp-notify": "^3.0.0",
+    "gulp-parker": "^0.1.4",
+    "gulp-plumber": "^1.1.0",
+    "gulp-readme-to-markdown": "^0.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-size": "^2.1.0",
+    "gulp-sort": "^2.0.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-svgmin": "^1.2.4",
+    "gulp-uglify-es": "^0.1.6",
+    "gulp-util": "^3.0.8",
+    "gulp-wp-pot": "^2.0.6",
+    "path": "^0.12.7"
+  }
+}

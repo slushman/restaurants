@@ -1,0 +1,71 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+$bp__letters1: 480px;
+$bp__sidemenu: 600px;
+$bp__letters2: 930px;
+$bp__laptop: 1024px;
+
+.letter-sort-menu {
+	display 		: flex;
+	justify-content : space-around;
+	list-style 		: none;
+	margin 			: 0 0 1.5em;
+	padding 		: 0;
+
+	@media only screen and (max-width: $bp__laptop - 1) {
+		flex-wrap: wrap;
+	}
+}
+
+.letter-sorter {
+	cursor 		: pointer;
+	height 		: 4em;
+	min-width 	: 1.5em;
+	text-align 	: center;
+	width 		: 25%;
+
+	@media only screen and (min-width: $bp__letters1) {
+		width: calc( 100% / 7 );
+	}
+
+	@media only screen and (min-width: $bp__sidemenu) {
+		width: calc( 100% / 9 );
+	}
+
+	@media only screen and (min-width: $bp__letters2) {
+		width: calc( 100% / 14 );
+	}
+
+	@media only screen and (min-width: $bp__laptop) {
+		height	: auto;
+		width	: auto;
+	}
+}
+
+.menu-files {
+	display: none;
+}
+
+.menu-file-link {
+	@media (max-width: $bp__letters2 - 1) {
+		display 		: inline-block;
+		margin-bottom	: calc( 48px - 1em );
+	}
+}
+
+.letter-list {
+	list-style 		: none;
+	margin 			: 0 0 1.5em;
+	padding 		: 0;
+}
+
+[aria-hidden="true"] {
+	display: none;
+}
+
+.link-top {
+	float		: right;
+	font-size 	: 0.9em;
+}
