@@ -61,7 +61,7 @@ class Restaurants {
 		$restaurants['type'] 				= 'string';
 		$restaurants['sanitize_callback'] 	= 'sanitize_text_field';
 
-		register_meta( 'page', 'restaurants', $restaurants );
+		register_meta( 'post', 'restaurants', $restaurants );
 
 	} // register_meta()
 

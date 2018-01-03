@@ -28,7 +28,7 @@ class Posts {
 	 */
 	public function hooks() {
 
-		add_action( 'save_post', array( $this,  'insert_post_for_new_restaurant' ), 99, 2 );
+		add_action( 'save_post', array( $this, 'insert_post_for_new_restaurant' ), 99, 2 );
 
 	} // hooks()
 
@@ -57,10 +57,10 @@ class Posts {
 
 		$status = get_post_status( $postID );
 
-		if ( 'publish' !== $status && 'future' !== $status ) { return FALSE; }
+		if ( in_array( $status, array( 'draft', 'pending', 'auto-draft', 'future' ) ) { return FALSE; }
 
-		$content = '';
-		$meta = get_post_custom( $postID );
+		$content 	= '';
+		$meta 		= get_post_custom( $postID );
 
 		$post_args['post_date'] = $post->post_date;
 
@@ -89,9 +89,11 @@ class Posts {
 	} // insert_post_for_new_restaurant()
 
 	/**
-	 * [does_post_already_exist description]
-	 * @param  [type] $rest [description]
-	 * @return [type]       [description]
+	 * Checks for the existence of a post.
+	 *
+	 * @since 		1.0.0
+	 * @param 		obj 		$rest 		The post object.
+	 * @return 		bool 					FALSE if this post doesn't exist, otherwise TRUE.
 	 */
 	private function does_post_already_exist( $rest ) {
 

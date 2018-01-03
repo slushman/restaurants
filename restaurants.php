@@ -12,13 +12,17 @@
  * Plugin URI: 			https://www.allergenmen.us
  * GitHub Plugin URI:	https://github.com/slushman/restaurants
  * Description: 		A simple Restaurants custom post type plugin.
- * Version: 			1.0.1
+ * Version: 			1.0.2
  * Author: 				Slushman
  * Author URI: 			https://www.slushman.com
  * License: 			GPL-2.0+
  * License URI: 		http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: 		restaurants
  * Domain Path: 		/languages
+ *
+ * @todo 		Add menu publication date
+ * @todo 		Figure out adding the sorter via GutenBlock
+ * @todo 		Add restaurants list via GutenBlock
  */
 
 use Restaurants\Includes as Inc;
@@ -33,7 +37,7 @@ if ( ! defined( 'WPINC' ) ) { die; }
 define( 'RESTAURANTS_FILE', plugin_basename( __FILE__ ) );
 define( 'RESTAURANTS_SLUG', 'restaurants' );
 define( 'RESTAURANTS_SETTINGS', 'restaurants_settings' );
-define( 'RESTAURANTS_VERSION', '1.0.0' );
+define( 'RESTAURANTS_VERSION', '1.0.1' );
 define( 'RESTAURANTS_CUSTOMIZER', 'restaurants' );
 define( 'RESTAURANTS_PATH', plugin_dir_path( __FILE__ ) );
 
