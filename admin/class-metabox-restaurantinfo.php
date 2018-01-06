@@ -29,7 +29,6 @@ class Metabox_RestaurantInfo extends \Restaurants\Admin\Metabox {
 		$fields[] 									= array( 'restaurant-url', 'url', '', 'Text', $args_field1 );
 
 		$args_field2['attributes']['id'] 			= 'menu-instructions';
-		$args_field2['attributes']['type'] 			= 'url';
 		$args_field2['properties']['description'] 	= esc_html__( 'What if there is not a published allergen menu. "Ask at restaurant.", "No menu available.", etc', 'restaurants' );
 		$args_field2['properties']['label'] 		= esc_html__( 'Menu Instructions', 'restaurants' );
 		$fields[] 									= array( 'menu-instructions', 'editor', '', 'Editor', $args_field2 );

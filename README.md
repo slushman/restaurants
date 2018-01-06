@@ -19,6 +19,12 @@ Simple Restaurants custom post post plugin.
 
 ## Upgrade Notice ##
 
+### 1.0.3 ###
+Adds single restaurant post template.
+
+### 1.0.2 ###
+Reduces the duplicate post issue.
+
 ### 1.0.1 ###
 Hides the thumbnail column on mobile.
 

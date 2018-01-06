@@ -1,4 +1,4 @@
-# Copyright (C) 2017 Restaurants
+# Copyright (C) 2018 Restaurants
 # This file is distributed under the same license as the Restaurants package.
 msgid ""
 msgstr ""

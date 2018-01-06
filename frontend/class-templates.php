@@ -84,10 +84,7 @@ class Templates {
 		add_action( 'restaurants_after_loop', 			array( $this, 'loop_wrap_end' ), 10, 1 );
 
 		// Single
-		add_action( 'restaurants_single_content', 		array( $this, 'single_restaurant_thumbnail' ), 10 );
-		add_action( 'restaurants_single_content', 		array( $this, 'single_restaurant_posttitle' ), 15 );
-		add_action( 'restaurants_single_content', 		array( $this, 'single_restaurant_subtitle' ), 20, 1 );
-		add_action( 'restaurants_single_content', 		array( $this, 'single_restaurant_content' ), 25 );
+		add_action( 'restaurants_single_content', 		array( $this, 'single_restaurant_website' ), 30, 1 );
 		add_action( 'restaurants_single_content', 		array( $this, 'single_restaurant_meta_field' ), 30, 1 );
 
 	} // hooks()
@@ -349,7 +346,7 @@ class Templates {
 	 */
 	public function single_restaurant_meta_field( $meta ) {
 
-		include restaurants_get_template( 'restaurant-metafield', 'single' );
+		include restaurants_get_template( 'restaurant-meta-field', 'single' );
 
 	} // single_restaurant_meta_field()
 
@@ -400,6 +397,19 @@ class Templates {
 		include restaurants_get_template( 'restaurant-thumbnail', 'single' );
 
 	} // single_restaurant_thumbnail()
+
+	/**
+	 * Includes the restaurant website.
+	 *
+	 * @hooked 		restaurants_single_content 		30
+	 * @since 		1.0.0
+	 * @param 		array 		$meta 		The post metadata
+	 */
+	public function single_restaurant_website( $meta ) {
+
+		include restaurants_get_template( 'restaurant-website', 'single' );
+
+	} // single_restaurant_website()
 
 	/**
 	 * Returns a reference to this class. Used for removing

@@ -57,7 +57,7 @@ class Posts {
 
 		$status = get_post_status( $postID );
 
-		if ( in_array( $status, array( 'draft', 'pending', 'auto-draft', 'future' ) ) { return FALSE; }
+		if ( in_array( $status, array( 'draft', 'pending', 'auto-draft', 'future' ) ) ) { return FALSE; }
 
 		$content 	= '';
 		$meta 		= get_post_custom( $postID );

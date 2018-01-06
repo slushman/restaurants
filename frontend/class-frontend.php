@@ -139,17 +139,131 @@ class Frontend {
 		 *
 		 * @link 	http://nacin.com/2010/05/18/rethinking-template-tags-in-plugins/
 		 */
-		add_action( 'listrestaurants', array( $this, 'shortcode' ) );
+		add_action( 'listrestaurants', 		array( $this, 'shortcode' ) );
 		add_action( 'wp_enqueue_scripts', 	array( $this, 'enqueue_styles' ) );
 		add_action( 'wp_enqueue_scripts', 	array( $this, 'enqueue_scripts' ) );
 
-		add_filter( 'single_template', 		array( $this, 'single_cpt_template' ), 11 );
+		//add_filter( 'single_template', 		array( $this, 'single_cpt_template' ), 11 );
 		add_filter( 'posts_fields', 		array( $this, 'create_temp_column' ), 10, 2 );
 		add_filter( 'posts_orderby', 		array( $this, 'sort_by_temp_column' ), 10, 2 );
+		add_filter( 'the_content', 			array( $this, 'add_restaurant_links' ), 10, 1 );
+		add_filter( 'the_content', 			array( $this, 'add_restaurant_menu_instructions' ), 10, 1 );
 
 		add_shortcode( 'listrestaurants', 	array( $this, 'shortcode' ) );
 
+
+
 	} // hooks()
+
+	/**
+	 * Displays the restaurant links at the bottom of the content.
+	 *
+	 * @param 		mixed 		$content 		The post content.
+	 * @return 		mixed 						The post content plus the links.
+	 */
+	public function add_restaurant_links( $content ) {
+
+		if ( ! is_singular( 'restaurant' ) ) { return $content; }
+
+		ob_start();
+
+		$meta = get_post_custom( get_the_ID() );
+
+		echo $content;
+
+		include restaurants_get_template( 'restaurant-links-begin', 'single' );
+
+		include restaurants_get_template( 'restaurant-website', 'single' );
+
+		include restaurants_get_template( 'restaurant-allergen-menus', 'single' );
+
+		include restaurants_get_template( 'restaurant-links-end', 'single' );
+
+		$output = ob_get_contents();
+
+		ob_end_clean();
+
+		return $output;
+
+	} // add_restaurant_links()
+
+	/**
+	 * Displays the restaurant website link at the bottom of the content.
+	 *
+	 * @param 		mixed 		$content 		The post content.
+	 * @return 		mixed 						The post content plus the website link.
+	 */
+	public function add_restaurant_website( $content ) {
+
+		if ( ! is_singular( 'restaurant' ) ) { return $content; }
+
+		ob_start();
+
+		$meta = get_post_custom( get_the_ID() );
+
+		echo $content;
+
+		include restaurants_get_template( 'restaurant-website', 'single' );
+
+		$output = ob_get_contents();
+
+		ob_end_clean();
+
+		return $output;
+
+	} // add_restaurant_website()
+
+	/**
+	 * Displays the restaurant allergen menu links at the bottom of the content.
+	 *
+	 * @param 		mixed 		$content 		The post content.
+	 * @return 		mixed 						The post content plus the allergen menu links.
+	 */
+	public function add_restaurant_allergen_menus( $content ) {
+
+		if ( ! is_singular( 'restaurant' ) ) { return $content; }
+
+		ob_start();
+
+		$meta = get_post_custom( get_the_ID() );
+
+		echo $content;
+
+		include restaurants_get_template( 'restaurant-allergen-menus', 'single' );
+
+		$output = ob_get_contents();
+
+		ob_end_clean();
+
+		return $output;
+
+	} // add_restaurant_allergen_menus()
+
+	/**
+	 * Displays the restaurant allergen menu instructions at the bottom of the content.
+	 *
+	 * @param 		mixed 		$content 		The post content.
+	 * @return 		mixed 						The post content plus the allergen menu instructions.
+	 */
+	public function add_restaurant_menu_instructions( $content ) {
+
+		if ( ! is_singular( 'restaurant' ) ) { return $content; }
+
+		ob_start();
+
+		$meta = get_post_custom( get_the_ID() );
+
+		echo $content;
+
+		include restaurants_get_template( 'restaurant-menu-instructions', 'single' );
+
+		$output = ob_get_contents();
+
+		ob_end_clean();
+
+		return $output;
+
+	} // add_restaurant_menu_instructions()
 
 	/**
 	 * Creates a new column to sort SQL queries by.
@@ -234,30 +348,6 @@ class Frontend {
 	} // set_settings()
 
 	/**
-	 * Sorts the orderby parameter for WP_Query by the temp column.
-	 *
-	 * @hooked 		posts_orderby
-	 * @since 		1.0.0
-	 * @param 		string 		$orderby 		The current orderby statement.
-	 * @return 		string 						The modified orderby statement.
-	 */
-	public function sort_by_temp_column( $orderby, $query ) {
-
-		if ( 'restaurant' !== $query->query['post_type'] ) { return $orderby; }
-
-		$custom_orderby = " UPPER(title2) ASC";
-
-		if ( $custom_orderby ) {
-
-			$orderby = $custom_orderby;
-
-		}
-
-		return $orderby;
-
-	} // sort_by_temp_column()
-
-	/**
 	 * Displays the output for the listrestaurants shortcode.
 	 *
 	 * @hooked 		add_shortcode
@@ -296,5 +386,53 @@ class Frontend {
 		return $output;
 
 	} // shortcode()
+
+	/**
+	 * Adds a default single employee template to the template hierarchy.
+	 *
+	 * @see 	https://developer.wordpress.org/themes/basics/template-hierarchy/
+	 *
+	 * @param 	string 		$template 		The name of the template
+	 * @return 	mixed 						The single template
+	 */
+	public function single_cpt_template( $template ) {
+
+		global $post;
+
+		$return = $template;
+
+		if ( 'restaurant' == $post->post_type ) {
+
+			$return = restaurants_get_template( 'single-restaurant', 'single' );
+
+		}
+
+		return $return;
+
+	} // single_cpt_template()
+
+	/**
+	 * Sorts the orderby parameter for WP_Query by the temp column.
+	 *
+	 * @hooked 		posts_orderby
+	 * @since 		1.0.0
+	 * @param 		string 		$orderby 		The current orderby statement.
+	 * @return 		string 						The modified orderby statement.
+	 */
+	public function sort_by_temp_column( $orderby, $query ) {
+
+		if ( 'restaurant' !== $query->query['post_type'] ) { return $orderby; }
+
+		$custom_orderby = " UPPER(title2) ASC";
+
+		if ( $custom_orderby ) {
+
+			$orderby = $custom_orderby;
+
+		}
+
+		return $orderby;
+
+	} // sort_by_temp_column()
 
 } // class
