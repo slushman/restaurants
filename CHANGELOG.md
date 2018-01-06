@@ -1,5 +1,8 @@
 # Changelog #
 
+## 1.0.4 ##
+* Adds post author for auto-posts.
+
 ## 1.0.3 ##
 * Fixes minor formatting bug from previous change.
 * Adds single restaurant post template.

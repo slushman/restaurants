@@ -4,7 +4,7 @@ Donate link: https://www.slushman.com/
 Tags: menus, restaurants
 Requires at least: 3.0.1
 Tested up to: 4.9
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,6 +26,9 @@ Simple Restaurants custom post post plugin.
 
 == Changelog ==
 
+= 1.0.4 =
+* Adds post author for auto-posts.
+
 = 1.0.3 =
 * Fixes minor formatting bug from previous change.
 * Adds single restaurant post template.
@@ -42,6 +45,9 @@ Simple Restaurants custom post post plugin.
 
 
 == Upgrade Notice ==
+
+= 1.0.4 =
+* Adds post author for auto-posts.
 
 = 1.0.3 =
 Adds single restaurant post template.
