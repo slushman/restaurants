@@ -80,7 +80,7 @@ class Posts {
 
 		}
 
-		$post_args['post_author'] 	= 'slushman';
+		$post_args['post_author'] 	= 2;
 		$post_args['post_status'] 	= 'publish';
 		$post_args['post_title'] 	= $post->post_title . ' added to the menus!';
 		$newPostID 					= wp_insert_post( $post_args );

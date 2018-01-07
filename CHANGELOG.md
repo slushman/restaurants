@@ -1,5 +1,8 @@
 # Changelog #
 
+## 1.0.4.1 ##
+* Adds post author ID for auto-posts.
+
 ## 1.0.4 ##
 * Adds post author for auto-posts.
 
