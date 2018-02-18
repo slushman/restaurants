@@ -39,6 +39,7 @@ class CPT_Restaurant {
 		add_action( 'manage_restaurant_posts_custom_column', 	array( $this, 'restaurant_column_content' ), 10, 2 );
 		add_action( 'request', 									array( $this, 'restaurant_order_sorting' ), 10, 2 );
 		add_action( 'wp_loaded', 								array( $this, 'add_image_sizes' ) );
+		add_action( 'after_switch_theme', 						array( $this, 'flush_rewrites' ) );
 
 	} // hooks()
 
@@ -53,6 +54,20 @@ class CPT_Restaurant {
 		add_image_size( 'col-thumb', 75, 75, true );
 
 	} // add_image_sizes()
+
+	/**
+	 * Flushes the rewrite rules.
+	 *
+	 * @hooked 		after_switch_theme
+	 * @since 		1.0.5
+	 */
+	public function flush_rewrites() {
+
+		$this->new_cpt_restaurant();
+
+		flush_rewrite_rules();
+
+	} // flush_rewrites()
 
 	/**
 	 * Populates the custom columns with content.
@@ -72,6 +87,15 @@ class CPT_Restaurant {
 			$thumb = get_the_post_thumbnail( $post_id, 'col-thumb' );
 
 			echo $thumb;
+
+		}
+
+		if ( 'menu' === $column_name ) {
+
+			$meta 		= get_post_meta( $post_id, 'menu-files' );
+			$files 		= maybe_unserialize( $meta[0] );
+
+			echo count( $files );
 
 		}
 
@@ -118,6 +142,7 @@ class CPT_Restaurant {
 		$new['cb'] 			= '<input type="checkbox" />';
 		$new['thumbnail'] 	= __( 'Thumbnail', 'restaurants' );
 		$new['title'] 		= __( 'Title', 'restaurants' );
+		$new['menu'] 		= __( 'Menu', 'restaurants' );
 		$new['date'] 		= __( 'Date' );
 
 		return $new;
@@ -134,88 +159,13 @@ class CPT_Restaurant {
 
 		$cap_type = 'post';
 
-		$opts['can_export']								= TRUE;
-		$opts['capability_type']						= $cap_type;
-		$opts['description']							= '';
-		$opts['exclude_from_search']					= FALSE;
-		$opts['has_archive']							= FALSE;
-		$opts['hierarchical']							= FALSE;
-		$opts['map_meta_cap']							= TRUE;
+		$opts['label']									= __( 'Restaurants', 'restaurants' );
 		$opts['menu_icon']								= 'dashicons-store';
 		$opts['menu_position']							= 25;
 		$opts['public']									= TRUE;
-		$opts['publicly_querable']						= TRUE;
-		$opts['query_var']								= TRUE;
-		$opts['register_meta_box_cb']					= '';
-		$opts['rewrite']								= FALSE;
-		$opts['rest_base']								= 'restaurant';
-		$opts['rest_controller_class']					= 'WP_REST_Posts_Controller';
-		$opts['show_in_admin_bar']						= TRUE;
-		$opts['show_in_menu']							= TRUE;
-		$opts['show_in_nav_menu']						= TRUE;
-		$opts['show_ui']								= TRUE;
+		$opts['show_admin_column']						= TRUE;
+		$opts['show_in_rest'] 							= TRUE;
 		$opts['supports']								= array( 'title', 'editor', 'thumbnail', 'revisions' );
-		$opts['taxonomies']								= array();
-
-		$opts['capabilities']['delete_others_posts']	= "delete_others_{$cap_type}s";
-		$opts['capabilities']['delete_post']			= "delete_{$cap_type}";
-		$opts['capabilities']['delete_posts']			= "delete_{$cap_type}s";
-		$opts['capabilities']['delete_private_posts']	= "delete_private_{$cap_type}s";
-		$opts['capabilities']['delete_published_posts']	= "delete_published_{$cap_type}s";
-		$opts['capabilities']['edit_others_posts']		= "edit_others_{$cap_type}s";
-		$opts['capabilities']['edit_post']				= "edit_{$cap_type}";
-		$opts['capabilities']['edit_posts']				= "edit_{$cap_type}s";
-		$opts['capabilities']['edit_private_posts']		= "edit_private_{$cap_type}s";
-		$opts['capabilities']['edit_published_posts']	= "edit_published_{$cap_type}s";
-		$opts['capabilities']['publish_posts']			= "publish_{$cap_type}s";
-		$opts['capabilities']['read_post']				= "read_{$cap_type}";
-		$opts['capabilities']['read_private_posts']		= "read_private_{$cap_type}s";
-
-		$opts['labels']['add_new']						= esc_html__( 'Add New Restaurant', 'restaurants' );
-		$opts['labels']['add_new_item']					= esc_html__( 'Add New Restaurant', 'restaurants' );
-		$opts['labels']['all_items']					= esc_html__( 'Restaurants', 'restaurants' );
-		$opts['labels']['edit_item']					= esc_html__( 'Edit Restaurant' , 'restaurants');
-		$opts['labels']['menu_name']					= esc_html__( 'Restaurants', 'restaurants' );
-		$opts['labels']['name']							= esc_html__( 'Restaurants', 'restaurants' );
-		$opts['labels']['name_admin_bar']				= esc_html__( 'Restaurant', 'restaurants' );
-		$opts['labels']['new_item']						= esc_html__( 'New Restaurant', 'restaurants' );
-		$opts['labels']['not_found']					= esc_html__( 'No Restaurants Found', 'restaurants' );
-		$opts['labels']['not_found_in_trash']			= esc_html__( 'No Restaurants Found in Trash', 'restaurants' );
-		$opts['labels']['parent_item_colon']			= esc_html__( 'Parent Restaurants :', 'restaurants' );
-		$opts['labels']['search_items']					= esc_html__( 'Search Restaurants', 'restaurants' );
-		$opts['labels']['singular_name']				= esc_html__( 'Restaurant', 'restaurants' );
-		$opts['labels']['view_item']					= esc_html__( 'View Restaurant', 'restaurants' );
-
-		$opts['labels']['add_new']						= esc_html__( 'Add New Restaurant', 'restaurants' );
-		$opts['labels']['add_new_item']					= esc_html__( 'Add New Restaurant', 'restaurants' );
-		$opts['labels']['all_items']					= esc_html__( 'Restaurants', 'restaurants' );
-		$opts['labels']['archives']						= esc_html__( 'Restaurants', 'restaurants' );
-		$opts['labels']['edit_item']					= esc_html__( 'Edit Restaurant', 'restaurants');
-		$opts['labels']['featured_image']				= esc_html__( 'Restaurant Logo', 'restaurants');
-		$opts['labels']['filter_items_list']			= esc_html__( 'Restaurants', 'restaurants');
-		$opts['labels']['insert_into_item']				= esc_html__( 'Restaurant', 'restaurants');
-		$opts['labels']['items_list']					= esc_html__( 'Restaurants', 'restaurants');
-		$opts['labels']['items_list_navigation']		= esc_html__( 'Restaurants', 'restaurants');
-		$opts['labels']['menu_name']					= esc_html__( 'Restaurants', 'restaurants' );
-		$opts['labels']['name']							= esc_html__( 'Restaurants', 'restaurants' );
-		$opts['labels']['name_admin_bar']				= esc_html__( 'Restaurant', 'restaurants' );
-		$opts['labels']['new_item']						= esc_html__( 'New Restaurant', 'restaurants' );
-		$opts['labels']['not_found']					= esc_html__( 'No Restaurants Found', 'restaurants' );
-		$opts['labels']['not_found_in_trash']			= esc_html__( 'No Restaurants Found in Trash', 'restaurants' );
-		$opts['labels']['parent_item_colon']			= esc_html__( 'Parent Restaurants :', 'restaurants' );
-		$opts['labels']['remove_featured_image']		= esc_html__( 'Remove Restaurant Logo', 'restaurants' );
-		$opts['labels']['search_items']					= esc_html__( 'Search Restaurants', 'restaurants' );
-		$opts['labels']['set_featured_image']			= esc_html__( 'Set Restaurant Logo', 'restaurants' );
-		$opts['labels']['singular_name']				= esc_html__( 'Restaurant', 'restaurants' );
-		$opts['labels']['upload_to_this_item']			= esc_html__( 'Restaurant', 'restaurants' );
-		$opts['labels']['use_featured_image']			= esc_html__( 'Use as Restaurant Logo', 'restaurants' );
-		$opts['labels']['view_item']					= esc_html__( 'View Restaurant', 'restaurants' );
-
-		$opts['rewrite']['ep_mask']						= EP_PERMALINK;
-		$opts['rewrite']['feeds']						= FALSE;
-		$opts['rewrite']['pages']						= TRUE;
-		$opts['rewrite']['slug']						= esc_html__( 'restaurant', 'restaurants' );
-		$opts['rewrite']['with_front']					= TRUE;
 
 		/**
 		 * The restaurants_cpt_restaurant_options filter.
