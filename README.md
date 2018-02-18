@@ -19,6 +19,12 @@ Simple Restaurants custom post post plugin.
 
 ## Upgrade Notice ##
 
+# 1.0.4.6 #
+* Removes call to Blocks class.
+
+# 1.0.4.5 #
+* Adds Menus column in the admin.
+
 ### 1.0.4.1 ###
 * Adds post author ID for auto-posts.
 

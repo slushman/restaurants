@@ -12,7 +12,7 @@
  * Plugin URI: 			https://www.allergenmen.us
  * GitHub Plugin URI:	https://github.com/slushman/restaurants
  * Description: 		A simple Restaurants custom post type plugin.
- * Version: 			1.0.4.5
+ * Version: 			1.0.4.6
  * Author: 				Slushman
  * Author URI: 			https://www.slushman.com
  * License: 			GPL-2.0+
@@ -68,7 +68,7 @@ function restaurants_init() {
 	$classes[] = new Admin\Metabox_RestaurantInfo();
 	$classes[] = new Frontend\Frontend();
 	$classes[] = new Frontend\Templates();
-	$classes[] = new Classes\Blocks();
+	//$classes[] = new Classes\Blocks();
 
 	foreach ( $classes as $class ) {
 

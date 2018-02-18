@@ -1,5 +1,8 @@
 # Changelog #
 
+# 1.0.4.6 #
+* Removes call to Blocks class.
+
 # 1.0.4.5 #
 * Adds flush_rewrites() method
 * Adds Menus column

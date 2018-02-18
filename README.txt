@@ -27,6 +27,9 @@ Simple Restaurants custom post post plugin.
 
 == Changelog ==
 
+= 1.0.4.6 =
+* Removes call to Blocks class.
+
 = 1.0.4.5 =
 * Adds flush_rewrites() method
 * Adds Menus column
@@ -54,6 +57,9 @@ Simple Restaurants custom post post plugin.
 
 
 == Upgrade Notice ==
+
+= 1.0.4.6 =
+* Removes call to Blocks class.
 
 = 1.0.4.5 =
 * Adds Menus column in the admin.
