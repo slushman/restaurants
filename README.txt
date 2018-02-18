@@ -3,8 +3,9 @@ Contributors: slushman
 Donate link: https://www.slushman.com/
 Tags: menus, restaurants
 Requires at least: 3.0.1
+Requires PHP: 5.4
 Tested up to: 4.9
-Stable tag: 1.0.4.1
+Stable tag: 1.0.4.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,6 +26,11 @@ Simple Restaurants custom post post plugin.
 
 
 == Changelog ==
+
+= 1.0.4.5 =
+* Adds flush_rewrites() method
+* Adds Menus column
+* Removes all defaults from CPT options array.
 
 = 1.0.4.1 =
 * Adds post author ID for auto-posts.
@@ -48,6 +54,9 @@ Simple Restaurants custom post post plugin.
 
 
 == Upgrade Notice ==
+
+= 1.0.4.5 =
+* Adds Menus column in the admin.
 
 = 1.0.4.1 =
 * Adds post author ID for auto-posts.

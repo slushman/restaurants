@@ -12,7 +12,7 @@
  * Plugin URI: 			https://www.allergenmen.us
  * GitHub Plugin URI:	https://github.com/slushman/restaurants
  * Description: 		A simple Restaurants custom post type plugin.
- * Version: 			1.0.4.1
+ * Version: 			1.0.4.5
  * Author: 				Slushman
  * Author URI: 			https://www.slushman.com
  * License: 			GPL-2.0+
@@ -20,6 +20,8 @@
  * Text Domain: 		restaurants
  * Domain Path: 		/languages
  *
+ * @todo 		BUG - the back to top link shoudl show every 10 restaurants,
+ * 						not just after the 10th one.
  * @todo 		Add menu publication date
  * @todo 		Figure out adding the sorter via GutenBlock
  * @todo 		Add restaurants list via GutenBlock
@@ -29,6 +31,7 @@ use Restaurants\Includes as Inc;
 use Restaurants\Admin;
 use Restaurants\Frontend;
 use Restaurants\Blocks;
+use Restaurants\Classes;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) { die; }
@@ -65,7 +68,7 @@ function restaurants_init() {
 	$classes[] = new Admin\Metabox_RestaurantInfo();
 	$classes[] = new Frontend\Frontend();
 	$classes[] = new Frontend\Templates();
-	//$classes[] = new Blocks\Restaurants();
+	$classes[] = new Classes\Blocks();
 
 	foreach ( $classes as $class ) {
 

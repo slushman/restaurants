@@ -1,5 +1,10 @@
 # Changelog #
 
+# 1.0.4.5 #
+* Adds flush_rewrites() method
+* Adds Menus column
+* Removes all defaults from CPT options array.
+
 ## 1.0.4.1 ##
 * Adds post author ID for auto-posts.
 
