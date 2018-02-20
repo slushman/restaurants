@@ -5,7 +5,7 @@ Tags: menus, restaurants
 Requires at least: 3.0.1
 Requires PHP: 5.4
 Tested up to: 4.9
-Stable tag: 1.0.4.5
+Stable tag: 1.0.4.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,6 +26,9 @@ Simple Restaurants custom post post plugin.
 
 
 == Changelog ==
+
+= 1.0.4.7 =
+* Adds REST API Endpoints for all post meta fields.
 
 = 1.0.4.6 =
 * Removes call to Blocks class.
@@ -57,6 +60,9 @@ Simple Restaurants custom post post plugin.
 
 
 == Upgrade Notice ==
+
+= 1.0.4.7 =
+* Adds REST API Endpoints for all post meta fields.
 
 = 1.0.4.6 =
 * Removes call to Blocks class.

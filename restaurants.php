@@ -12,7 +12,7 @@
  * Plugin URI: 			https://www.allergenmen.us
  * GitHub Plugin URI:	https://github.com/slushman/restaurants
  * Description: 		A simple Restaurants custom post type plugin.
- * Version: 			1.0.4.6
+ * Version: 			1.0.4.7
  * Author: 				Slushman
  * Author URI: 			https://www.slushman.com
  * License: 			GPL-2.0+

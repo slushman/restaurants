@@ -1,5 +1,8 @@
 # Changelog #
 
+# 1.0.4.7 #
+* Adds REST API Endpoints for all post meta fields.
+
 # 1.0.4.6 #
 * Removes call to Blocks class.
 

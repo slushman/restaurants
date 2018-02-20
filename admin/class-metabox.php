@@ -244,7 +244,7 @@ class Metabox {
 	/**
 	 * Registers all the post meta fields for the REST API.
 	 *
-	 * @since 		1.0.0
+	 * @since 		1.0.4.7
 	 */
 	public function restapi_fields() {
 
@@ -267,7 +267,7 @@ class Metabox {
 	/**
 	 * Returns the requested post meta field for the REST API.
 	 *
-	 * @since 		1.0.0
+	 * @since 		1.0.4.7
 	 * @param 		obj 		$object 			The post type.
 	 * @param 		string 		$field_name 		The field name.
 	 * @param 		?? 			$request 			No idea.
@@ -282,7 +282,7 @@ class Metabox {
 	/**
 	 * Updates the value of the requested post meta field for the REST API.
 	 *
-	 * @since 		1.0.0
+	 * @since 		1.0.4.7
 	 * @param 		mixed 		$value 				The value to save.
 	 * @param 		obj 		$object 			The post type.
 	 * @param 		string 		$field_name 		The field name.
