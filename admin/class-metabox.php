@@ -250,7 +250,7 @@ class Metabox {
 
 		foreach ( $this->fields as $field ) {
 
-			register_api_field(
+			register_rest_field(
 				$this->post_type,
 				$field[0],
 				array(

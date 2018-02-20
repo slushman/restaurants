@@ -1,5 +1,8 @@
 # Changelog #
 
+# 1.0.4.8 #
+* Updates REST API function to the correct WP function call.
+
 # 1.0.4.7 #
 * Adds REST API Endpoints for all post meta fields.
 
