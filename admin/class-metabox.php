@@ -127,6 +127,29 @@ class Metabox {
 	} // check_post_type()
 
 	/**
+	 * Changes CORS headers to allow any source to use the REST API.
+	 *
+	 * @since 		1.0.4.9
+	 * @param 		mixed 		$value 		The current CORS headers.
+	 * @return 		mixed 					Modified CORS headers.
+	 */
+	public function cors_headers() {
+
+		remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
+
+		add_filter( 'rest_pre_serve_request', function( $value ) {
+
+			header( 'Access-Control-Allow-Origin: *' );
+			header( 'Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE' );
+			header( 'Access-Control-Allow-Credentials: true' );
+
+			return $value;
+
+		});
+
+	} // cors_headers()
+
+	/**
 	 * Calls a metabox file specified in the add_meta_box args.
 	 *
 	 * @exits 		Not in the admin.

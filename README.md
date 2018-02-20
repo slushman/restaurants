@@ -19,6 +19,9 @@ Simple Restaurants custom post post plugin.
 
 ## Upgrade Notice ##
 
+# 1.0.4.9 #
+* Changes CORS headers to allow any source to use the REST API.
+
 # 1.0.4.8 #
 * Updates REST API function to the correct WP function call.
 
