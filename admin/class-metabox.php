@@ -242,6 +242,59 @@ class Metabox {
 	} // promote_metaboxes()
 
 	/**
+	 * Registers all the post meta fields for the REST API.
+	 *
+	 * @since 		1.0.0
+	 */
+	public function restapi_fields() {
+
+		foreach ( $this->fields as $field ) {
+
+			register_api_field(
+				$this->post_type,
+				$field[0],
+				array(
+					'get_callback' 		=> array( $this, 'restapi_get_post_meta' ),
+					'update_callback' 	=> array( $this, 'restapi_update_post_meta' ),
+					'schema' 			=> null,
+				)
+			);
+
+		}
+
+	} // restapi_fields()
+
+	/**
+	 * Returns the requested post meta field for the REST API.
+	 *
+	 * @since 		1.0.0
+	 * @param 		obj 		$object 			The post type.
+	 * @param 		string 		$field_name 		The field name.
+	 * @param 		?? 			$request 			No idea.
+	 * @return 		mixed 							The post meta.
+	 */
+	public function restapi_get_post_meta( $object, $field_name, $request ) {
+
+		return get_post_meta( $object['id'], $field_name );
+
+	} // restapi_get_post_meta()
+
+	/**
+	 * Updates the value of the requested post meta field for the REST API.
+	 *
+	 * @since 		1.0.0
+	 * @param 		mixed 		$value 				The value to save.
+	 * @param 		obj 		$object 			The post type.
+	 * @param 		string 		$field_name 		The field name.
+	 * @return 		?? 								The post meta.
+	 */
+	public function restapi_update_post_meta( $value, $object, $field_name ) {
+
+		return update_post_meta( $object['id'], $field_name, $value );
+
+	} // restapi_update_post_meta()
+
+	/**
 	 * Sanitizes the metadata
 	 *
 	 * If $posted is an array:

@@ -49,6 +49,7 @@ class Metabox_RestaurantInfo extends \Restaurants\Admin\Metabox {
 		add_action( 'save_post', 				array( $this, 'validate_meta' ), 10, 2 );
 		add_action( 'edit_form_after_title', 	array( $this, 'promote_metaboxes' ), 10, 1 );
 		add_action( 'add_meta_boxes', 			array( $this, 'set_meta' ), 1, 1 );
+		add_action( 'rest_api_init', 			array( $this, 'restapi_fields' ) );
 
 	} // hooks()
 
